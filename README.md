@@ -903,7 +903,7 @@ A resposta deve ser `false`. Salve os prints do comando de exclusão e da confir
 **Turma:** 2TDSPA
 **Integrantes e RMs:** informados no início deste README.
 
-- **GitHub público:** preencher com o endereço definitivo após a publicação.
+- **GitHub público:** https://github.com/Denise-ss/AMPARO_SUS_DEVOPS
 - **Vídeo no YouTube (Não listado, mínimo 720p, com voz e legendas):** preencher com o endereço definitivo após a publicação.
 - **Evidências:** pasta [`docs/EVIDENCIAS`](docs/EVIDENCIAS), com prints e relatório Word.
 - **Diagrama:** [`docs/ARQUITETURA/AMPARO_SUS_Arquitetura_DevOps.drawio`](docs/ARQUITETURA/AMPARO_SUS_Arquitetura_DevOps.drawio).
