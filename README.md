@@ -132,8 +132,6 @@ git clone https://github.com/Denise-ss/AMPARO_SUS_DEVOPS.git
 cd AMPARO_SUS_DEVOPS
 ```
 
-Substitua `URL_DO_REPOSITORIO_PUBLICO` pelo link do GitHub da entrega. O primeiro comando baixa os arquivos; o segundo entra na pasta do projeto. **Não digite literalmente o texto `URL_DO_REPOSITORIO_PUBLICO`**.
-
 Se você já tem a pasta `AMPARO_SUS_DEVOPS` no computador, não precisa clonar outra vez: basta abri-la no VS Code e continuar.
 
 ## 4. Criar o arquivo de senhas (.env)
