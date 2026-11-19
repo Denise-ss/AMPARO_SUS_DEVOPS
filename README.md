@@ -900,15 +900,39 @@ A resposta deve ser `false`. Salve os prints do comando de exclusão e da confir
 ## Links e arquivos da entrega
 
 **Projeto:** AMPARO SUS — Global Solution 2026/2 (CitizenTech)
+
+**Disciplina:** DevOps Tools & Cloud Computing
+
 **Turma:** 2TDSPA
-**Integrantes e RMs:** informados no início deste README.
 
-- **GitHub público:** https://github.com/Denise-ss/AMPARO_SUS_DEVOPS
-- **Vídeo no YouTube (Não listado, mínimo 720p, com voz e legendas):** preencher com o endereço definitivo após a publicação.
-- **Evidências:** pasta [`docs/EVIDENCIAS`](docs/EVIDENCIAS), com prints e relatório Word.
-- **Diagrama:** [`docs/ARQUITETURA/AMPARO_SUS_Arquitetura_DevOps.drawio`](docs/ARQUITETURA/AMPARO_SUS_Arquitetura_DevOps.drawio).
-- **Script do Azure CLI:** será adicionado à pasta `scripts/` antes da publicação final.
+**Integrantes:**
+- Denise Santos — RM 567559
+- Karen Cardoso — RM 566870
+- Lucas Dudena — RM 567600
+- Pedro Begali — RM 567478
 
-> **Antes de publicar:** atualizar os links acima e a URL usada no comando `git clone` da etapa 3. Conferir que o script Azure CLI e todos os arquivos citados já existem no repositório. Se ainda não foram criados, não apresentar como concluídos.
+### Repositório GitHub
 
-*Este README foi escrito para registrar como desenvolvemos e testamos a infraestrutura do AMPARO SUS e para permitir que outras pessoas repitam os passos utilizando seus próprios acessos e senhas.*
+https://github.com/Denise-ss/AMPARO_SUS_DEVOPS
+
+### Vídeo demonstrativo
+
+O vídeo será disponibilizado no YouTube, como não listado, após a gravação e edição, com narração e legendas.
+
+### Arquivos do projeto
+
+- **Código-fonte:** pasta `AmparoSus.Api/`
+- **Dockerfile:** `Dockerfile`
+- **Docker Compose:** `docker-compose.yml`
+- **Arquitetura:** `docs/ARQUITETURA/AMPARO_SUS_Arquitetura_DevOps.drawio`
+- **Script Azure CLI:** `scripts/Azure_CLI_Provisionar_VM_AMPARO_SUS.ps1`
+- **Evidências técnicas:** pasta `docs/EVIDENCIAS/`
+- **Manual de execução:** este `README.md`
+
+### Sobre as evidências
+
+Os testes completos de CRUD foram realizados com o Thunder Client no ambiente Docker local.
+
+Na máquina virtual Azure, também demonstramos o funcionamento dos contêineres, a conexão da API com o Oracle, os cadastros e o relacionamento entre as tabelas.
+
+As evidências apresentam os resultados reais obtidos durante o desenvolvimento e a implantação.
