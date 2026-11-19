@@ -128,7 +128,7 @@ Esses comandos só consultam as versões. Se algum deles não funcionar, a ferra
 No terminal, vá à pasta em que deseja guardar o trabalho e execute:
 
 ```powershell
-git clone URL_DO_REPOSITORIO_PUBLICO
+git clone https://github.com/Denise-ss/AMPARO_SUS_DEVOPS.git
 cd AMPARO_SUS_DEVOPS
 ```
 
