@@ -833,68 +833,176 @@ Para facilitar a conferência do professor, separamos as comprovações por assu
 
 A numeração dos prints segue os arquivos disponíveis; nem todos os números possuem uma imagem separada. Não inventamos evidências para preencher lacunas da sequência.
 
-## 21. Sobre o vídeo de demonstração
 
+## 21. Sobre o vídeo de demonstração
 
 **Vídeo demonstrativo — Global Solution DevOps:**
 
 [▶ Assistir à apresentação do AMPARO SUS no YouTube](https://youtu.be/fcHDBDPRuws)
 
-Para mostrar o CRUD completo, os registros do Thunder Client no Docker local documentam `GET`, `POST`, `PUT` e `DELETE` das duas entidades. Na Azure, documentamos a VM funcionando, requisições reais à API e a consulta `INNER JOIN` no Oracle. Assim não confundimos testes locais com testes na nuvem.
+O vídeo apresenta a infraestrutura desenvolvida para o projeto AMPARO SUS, incluindo:
 
-**Vídeo no YouTube (Não listado):** inserir o link após a publicação.
+- Máquina virtual Ubuntu criada na Microsoft Azure.
+- Implantação da API .NET 8 e do banco Oracle com Docker Compose.
+- Execução e verificação dos contêineres.
+- Consulta dos logs da API e do Oracle.
+- Demonstrações das operações CRUD pelo Thunder Client.
+- Consultas SQL diretamente no Oracle.
+- Relacionamento entre as tabelas de idosos e solicitações.
+- Configuração da rede Docker e do volume persistente.
+- Execução da API com usuário não administrador.
+- Encerramento da infraestrutura Azure após os testes.
 
-## 22. Encerramento da infraestrutura Azure (somente depois de salvar as evidências)
+Para demonstrar o CRUD completo, utilizamos as evidências dos testes realizados com o Thunder Client no ambiente Docker local, incluindo GET, POST, PUT e DELETE das duas entidades.
 
-A infraestrutura Azure é temporária e pode consumir créditos. Antes de remover recursos, **confirme que todas as gravações, prints, vídeos, arquivos e links já foram salvos**.
+Na Azure, também demonstramos a máquina virtual em execução, os contêineres Docker, as requisições reais à API e as consultas ao Oracle.
 
-No **PowerShell do Windows**, para verificar o que existe no grupo de recursos:
+As evidências estão identificadas de acordo com o ambiente utilizado, para não confundir os testes locais com os testes realizados na nuvem.
+
+O vídeo foi disponibilizado no YouTube para avaliação da disciplina DevOps Tools & Cloud Computing.
+
+---
+
+## 22. Encerramento da infraestrutura Azure
+
+A infraestrutura utilizada no projeto AMPARO SUS foi criada temporariamente na Microsoft Azure para fins acadêmicos e de demonstração.
+
+Como os recursos da nuvem podem consumir créditos, planejamos sua exclusão após finalizar os testes e registrar as evidências necessárias.
+
+### 22.1 Verificação dos recursos
+
+Antes da exclusão, utilizamos o PowerShell do Windows e o Azure CLI para consultar os recursos existentes no grupo do projeto.
 
 ```powershell
 az resource list --resource-group rg-amparo-sus-devops --output table
 ```
 
-Confira se o grupo contém **somente os recursos criados para este trabalho**. Não execute a exclusão se houver algo de outro projeto.
+Esse comando apresenta os recursos associados ao grupo `rg-amparo-sus-devops`.
 
-**Se precisar apenas parar o custo de computação, mantendo a VM para depois:**
+A verificação é importante para confirmar que estamos trabalhando apenas com a infraestrutura destinada ao AMPARO SUS.
+
+### 22.2 Alternativa para interromper a máquina virtual
+
+Caso seja necessário interromper temporariamente uma VM sem excluir todos os recursos, o Azure CLI disponibiliza o comando:
 
 ```powershell
 az vm deallocate --resource-group rg-amparo-sus-devops --name vm-amparo-sus
 ```
 
-Esse comando desaloca a VM, mas não remove todos os custos de armazenamento e outros recursos associados.
+Esse comando desaloca a máquina virtual.
 
-**Se a apresentação já estiver documentada e houver autorização para excluir definitivamente os recursos:**
+Entretanto, a desalocação não elimina necessariamente os custos relacionados aos discos, armazenamento e outros recursos da infraestrutura.
+
+Para nossa entrega, após concluir as demonstrações e preservar as evidências, optamos pela exclusão definitiva do grupo de recursos utilizado no projeto.
+
+### 22.3 Exclusão definitiva da infraestrutura
+
+Após a conclusão das gravações e dos testes, executamos:
 
 ```powershell
 az group delete --name rg-amparo-sus-devops --yes
 ```
 
-**Atenção:** esse comando pede a exclusão de **todo o grupo de recursos e seus itens**. A operação é destrutiva. Para ter certeza de que a exclusão terminou, execute:
+Esse comando solicita a exclusão definitiva do grupo de recursos `rg-amparo-sus-devops` e dos recursos associados a ele.
+
+A operação é destrutiva e não deve ser realizada antes de preservar os arquivos, prints e gravações necessários à documentação.
+
+### 22.4 Confirmação da exclusão
+
+Para verificar se o grupo de recursos foi realmente removido, executamos:
 
 ```powershell
 az group exists --name rg-amparo-sus-devops
 ```
 
-A resposta deve ser `false`. Salve os prints do comando de exclusão e da confirmação para incluir no relatório e no vídeo.
+**Resultado obtido:**
+
+```text
+false
+```
+
+O retorno `false` confirmou que o grupo de recursos do projeto não existia mais na assinatura Azure consultada.
+
+Também verificamos a lista de grupos de recursos no Portal Azure, onde o grupo `rg-amparo-sus-devops` deixou de aparecer.
+
+### 22.5 Evidência final
+
+A exclusão da infraestrutura foi registrada em vídeo, incluindo a execução do comando pelo Azure CLI e a confirmação de que o grupo não existia mais.
+
+A documentação demonstra o ciclo completo da infraestrutura utilizada no projeto:
+
+1. Provisionamento da máquina virtual.
+2. Instalação e configuração do Docker.
+3. Implantação da API .NET 8 e do Oracle.
+4. Execução dos testes e registro das evidências.
+5. Verificação dos serviços e do banco de dados.
+6. Exclusão definitiva dos recursos após a conclusão das demonstrações.
+
+**Vídeo com a demonstração da infraestrutura e sua exclusão:**
+
+[▶ AMPARO SUS — Vídeo demonstrativo DevOps](https://youtu.be/fcHDBDPRuws)
+
+---
 
 ## 23. Dúvidas comuns durante a execução
 
-**A API respondeu `[]` e 200 OK.** Isso é normal: a tabela está vazia, mas a consulta funcionou.
+**A API respondeu `[]` e 200 OK.**
 
-**O Oracle está como `Starting`.** Confira `docker compose logs --tail=30 oracle` e só prossiga quando ficar saudável.
+Isso é normal: a tabela está vazia, mas a consulta funcionou.
 
-**O Oracle respondeu `ORA-01017`.** Verifique se a senha do usuário `AMPARO_SUS` no banco é a mesma indicada por `AMPARO_DB_PWD` no `.env`. Mudar o `.env` não troca a senha que já existe no Oracle.
+**O Oracle está como `Starting`.**
 
-**O POST não cadastrou a solicitação.** Confira se o `idosoId` corresponde a um cadastro existente e se o tipo/status enviados são permitidos.
+Confira:
 
-**O Thunder Client retornou 404.** Confira o endpoint e o ID. Talvez aquele cadastro não exista ou já tenha sido excluído.
+```powershell
+docker compose logs --tail=30 oracle
+```
 
-**O acesso à Azure não respondeu.** Confirme se a VM está ligada, se os dois contêineres estão em execução e se o túnel SSH está aberto. `localhost:18080` é usado com o túnel; `localhost:8080` é usado para a API local.
+Aguarde até o banco apresentar o status saudável antes de continuar.
 
-**O cadastro sumiu após recriar o contêiner.** Confira se o Compose está usando o volume nomeado correto. Não use `docker compose down -v` se quiser manter os dados.
+**O Oracle respondeu `ORA-01017`.**
 
-**O professor não conseguiu repetir os passos.** Releia a ordem: Docker ligado → `.env` → Oracle Healthy → usuário/tablespace → migrations → API → Thunder Client. Se essas etapas estiverem invertidas, a API pode iniciar sem conseguir acessar as tabelas.
+Verifique se a senha do usuário `AMPARO_SUS` no banco é a mesma indicada por `AMPARO_DB_PWD` no arquivo `.env`.
+
+Alterar apenas o `.env` não troca a senha de um usuário que já existe no Oracle.
+
+**O POST não cadastrou a solicitação.**
+
+Confira se o `idosoId` corresponde a um cadastro existente e se o tipo e o status enviados são permitidos pela API.
+
+**O Thunder Client retornou 404.**
+
+Confira o endpoint e o identificador informado. O cadastro pode não existir ou já ter sido excluído.
+
+**O acesso à Azure não respondeu.**
+
+Durante a implantação, era necessário confirmar se a VM estava ligada, se os contêineres estavam executando e se o túnel SSH estava aberto.
+
+A porta `localhost:18080` foi utilizada para acessar a API na Azure por meio do túnel SSH.
+
+A porta `localhost:8080` foi utilizada para testar a API no Docker local.
+
+**Importante:** a infraestrutura Azure utilizada na demonstração já foi excluída. Para executar novamente os testes na nuvem, seria necessário provisionar um novo ambiente.
+
+**O cadastro sumiu após recriar o contêiner.**
+
+Confira se o Docker Compose está utilizando o volume nomeado correto.
+
+Não utilize `docker compose down -v` se desejar preservar os dados armazenados no volume.
+
+**O professor não conseguiu repetir os passos.**
+
+Confira a sequência de execução:
+
+1. Docker em funcionamento.
+2. Arquivo `.env` configurado.
+3. Oracle iniciado e saudável.
+4. Usuário e tablespace criados no Oracle.
+5. Migrations aplicadas.
+6. API iniciada.
+7. Testes realizados pelo Thunder Client.
+
+Se essas etapas forem executadas fora da ordem, a API poderá iniciar sem conseguir acessar corretamente o banco de dados.
 
 ---
 
@@ -904,25 +1012,28 @@ A resposta deve ser `false`. Salve os prints do comando de exclusão e da confir
 
 **Disciplina:** DevOps Tools & Cloud Computing
 
+**Instituição:** FIAP — Análise e Desenvolvimento de Sistemas
+
 **Turma:** 2TDSPA
 
-**Integrantes:**
-- Denise Santos — RM 567559
-- Karen Cardoso — RM 566870
-- Lucas Dudena — RM 567600
-- Pedro Begali — RM 567478
+### Integrantes
+
+| Integrante | RM |
+|---|---|
+| Denise Santos | 567559 |
+| Karen Cardoso | 566870 |
+| Lucas Dudena | 567600 |
+| Pedro Begali | 567478 |
 
 ### Repositório GitHub
 
-https://github.com/Denise-ss/AMPARO_SUS_DEVOPS
-
+[▶ Acessar o repositório AMPARO_SUS_DEVOPS](https://github.com/Denise-ss/AMPARO_SUS_DEVOPS)
 
 ### Vídeo demonstrativo
 
 [▶ AMPARO SUS — Demonstração DevOps | Global Solution 2026](https://youtu.be/fcHDBDPRuws)
 
-Vídeo publicado no YouTube para avaliação da disciplina DevOps Tools & Cloud Computing, com demonstrações da infraestrutura Azure, Docker Compose, contêineres, CRUD, logs e consultas SQL no Oracle.
-
+Vídeo disponibilizado no YouTube para avaliação da disciplina DevOps Tools & Cloud Computing, com demonstrações da infraestrutura Azure, Docker Compose, contêineres, CRUD, logs e consultas SQL no Oracle.
 
 ### Arquivos do projeto
 
@@ -937,6 +1048,19 @@ Vídeo publicado no YouTube para avaliação da disciplina DevOps Tools & Cloud 
 ### Sobre as evidências
 
 Os testes completos de CRUD foram realizados com o Thunder Client no ambiente Docker local.
+
+Na máquina virtual Azure, também demonstramos o funcionamento dos contêineres, a conexão da API com o Oracle, os cadastros e o relacionamento entre as tabelas.
+
+As evidências apresentam os resultados reais obtidos durante o desenvolvimento e a implantação.
+
+O encerramento da infraestrutura também foi documentado, demonstrando que os recursos temporários da Azure foram excluídos após a conclusão dos testes.
+
+---
+
+**AMPARO SUS — Global Solution FIAP 2026/2**
+
+Projeto acadêmico desenvolvido com foco em tecnologia, acessibilidade e apoio à população idosa.
+
 
 Na máquina virtual Azure, também demonstramos o funcionamento dos contêineres, a conexão da API com o Oracle, os cadastros e o relacionamento entre as tabelas.
 
