@@ -1,0 +1,16 @@
+# .dockerignore impede que arquivos desnecessários entrem na construção da imagem Docker.
+# Arquivos que nao precisam entrar na imagem Docker
+
+**/bin
+**/obj
+.vs
+.git
+docs
+
+# Arquivos locais e credenciais
+**/*.user
+**/secrets.json
+**/appsettings.Development.json
+**/appsettings.Production.json
+**/.env
+**/.env.*

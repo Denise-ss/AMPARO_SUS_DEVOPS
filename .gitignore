@@ -1,0 +1,34 @@
+# GS 2026/2 - AMPARO SUS
+# Arquivos que nao devem ser enviados ao GitHub
+
+#.gitignore impede que arquivos locais sejam adicionados normalmente ao Git.
+# Arquivos gerados pelo Visual Studio e .NET
+.vs/
+**/bin/
+**/obj/
+*.user
+*.suo
+TestResults/
+
+# Senhas e configuracoes locais
+.env
+.env.*
+!.env.example
+**/secrets.json
+**/appsettings.Development.json
+**/appsettings.Production.json
+
+# Arquivos temporarios
+.DS_Store
+Thumbs.db
+*.tar.gz
+
+**/appsettings.json
+**/appsettings.*.json
+**/secrets.json
+
+
+# Arquivos temporarios do Word
+~$*
+~WRL*
+*.tmp

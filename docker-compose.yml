@@ -1,0 +1,59 @@
+
+# GS 2026/2 - AMPARO SUS
+# API .NET 8 e banco Oracle em containers
+
+services:
+
+  # Banco de dados da aplicacao
+  oracle:
+    image: container-registry.oracle.com/database/free:latest-lite
+    container_name: amparo-oracle
+
+    environment:
+      ORACLE_PWD: ${ORACLE_PWD:?Configure_ORACLE_PWD}
+
+    ports:
+      - "127.0.0.1:1521:1521"
+
+    volumes:
+      - oracle_data:/opt/oracle/oradata
+
+    networks:
+      - amparo_net
+
+    restart: unless-stopped
+
+  # API que desenvolvemos na disciplina de .NET
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+
+    image: amparo-sus-api:dev
+    container_name: amparo-api
+
+    environment:
+      ASPNETCORE_ENVIRONMENT: Production
+      ASPNETCORE_HTTP_PORTS: "8080"
+      ConnectionStrings__Oracle: "User Id=AMPARO_SUS;Password=${AMPARO_DB_PWD:?Configure_AMPARO_DB_PWD};Data Source=oracle:1521/FREEPDB1;"
+
+    ports:
+      - "127.0.0.1:8080:8080"
+
+    depends_on:
+      oracle:
+        condition: service_healthy
+
+    networks:
+      - amparo_net
+
+    restart: unless-stopped
+
+# Armazena os dados do Oracle
+volumes:
+  oracle_data:
+
+# Rede de comunicacao entre os containers
+networks:
+  amparo_net:
+    driver: bridge
