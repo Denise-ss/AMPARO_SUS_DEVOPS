@@ -835,7 +835,10 @@ A numeração dos prints segue os arquivos disponíveis; nem todos os números p
 
 ## 21. Sobre o vídeo de demonstração
 
-O vídeo da entrega precisa mostrar **VM na Azure, Docker Compose, os dois contêineres, CRUD, logs e SELECT no banco**, com narração, legendas e resolução de pelo menos **720p**. Nós utilizamos as telas e os resultados reais do desenvolvimento.
+
+**Vídeo demonstrativo — Global Solution DevOps:**
+
+[▶ Assistir à apresentação do AMPARO SUS no YouTube](https://youtu.be/fcHDBDPRuws)
 
 Para mostrar o CRUD completo, os registros do Thunder Client no Docker local documentam `GET`, `POST`, `PUT` e `DELETE` das duas entidades. Na Azure, documentamos a VM funcionando, requisições reais à API e a consulta `INNER JOIN` no Oracle. Assim não confundimos testes locais com testes na nuvem.
 
@@ -913,9 +916,13 @@ A resposta deve ser `false`. Salve os prints do comando de exclusão e da confir
 
 https://github.com/Denise-ss/AMPARO_SUS_DEVOPS
 
+
 ### Vídeo demonstrativo
 
-O vídeo será disponibilizado no YouTube, como não listado, após a gravação e edição, com narração e legendas.
+[▶ AMPARO SUS — Demonstração DevOps | Global Solution 2026](https://youtu.be/fcHDBDPRuws)
+
+Vídeo publicado no YouTube para avaliação da disciplina DevOps Tools & Cloud Computing, com demonstrações da infraestrutura Azure, Docker Compose, contêineres, CRUD, logs e consultas SQL no Oracle.
+
 
 ### Arquivos do projeto
 
